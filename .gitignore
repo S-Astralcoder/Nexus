@@ -1,0 +1,9 @@
+#workspace files
+main.py
+
+#Confidential
+.env
+
+
+#run time files
+__pycache__

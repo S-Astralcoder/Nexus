@@ -1,14 +1,21 @@
 [project]
 name = "nexus"
 version = "0.1.0"
-description = "Agent Building FrameWork with allow for faster creation of agents"
+description = "Agent Building Framework with allow for faster creation of agents"
 readme = "README.md"
 authors = [
     { name = "S-Astralcoder", email = "suraj.astralcode.ai@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "litellm>=1.97.0",
+    "rich>=15.0.0",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.6,<0.12.0"]
 build-backend = "uv_build"
+
+
+[tool.pyright]
+typeCheckingMode = "basic"
