@@ -6,6 +6,7 @@ from rich.console import Console
 
 # Internal
 from nexus.config import AgentConfig
+from nexus.instruction import AgentInstruction
 from nexus.memory import AgentMemory
 from nexus.tool import ToolBook
 
@@ -15,13 +16,22 @@ warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
 
 
 class Agent:
-    def __init__(self, agent_config : AgentConfig, agent_memory : AgentMemory, tool_book : ToolBook | None = None, show_tool_calls : bool = True) -> None:
+    def __init__(self ,agent_config : AgentConfig, agent_memory : AgentMemory, instruction : AgentInstruction | None = None, tool_book : ToolBook | None = None, show_tool_calls : bool = True) -> None:
         self.agent_config = agent_config
         self.agent_memory = agent_memory
+        self.instruction = instruction
         self.tool_book = tool_book
         self.show_tool_calls = show_tool_calls
 
         self.console = Console()
+
+        self._add_instruction_if_exists()
+
+
+    def _add_instruction_if_exists(self):
+        if self.instruction is None:
+            return
+        self.agent_memory.add_memory("system", self.instruction.get_instruction())
 
     def get_response(self, message : str):
         try:
