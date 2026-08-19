@@ -1,4 +1,5 @@
 # External
+import json
 from typing import Any
 
 
@@ -16,4 +17,4 @@ class AgentMemory:
         self.memory.append(tool_call_content) #pyright: ignore
 
     def add_tool_call_result(self, tool_call_id : int, result_content : dict[Any, Any] | str):
-        self.memory.append({"role" : "tool", "tool_call_id" : tool_call_id, "content" : result_content})
+        self.memory.append({"role" : "tool", "tool_call_id" : tool_call_id, "content" : json.dumps(result_content)})
