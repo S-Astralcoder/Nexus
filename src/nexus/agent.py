@@ -9,7 +9,7 @@ import warnings
 from nexus.environment import AgentEnvironment
 from nexus.memory import AgentMemory
 from nexus.tool_registry import ToolRegistry
-from src.nexus.model import ModelBase
+from nexus.model import ModelBase
 
 
 warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
@@ -51,7 +51,7 @@ class Agent:
                 continue
 
             return response.choices[0].message.content
-
+        return "Max Iteration reached"
     
         
             

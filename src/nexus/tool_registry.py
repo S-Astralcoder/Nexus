@@ -11,13 +11,13 @@ class ToolRegistry:
 
 
     def _type_to_string_type(self, type):
-        if isinstance(type, str):
+        if type == str:
             return "string"
-        if isinstance(type, int):
+        if type == int:
             return "integer"
-        if isinstance(type, float):
+        if type == float:
             return "number"
-        if isinstance(type, bool):
+        if type == bool:
             return "boolean"
         raise UnsupportedParameterType(f"type : {type} is not supported in this current version. manually set parameters when adding tool")
 
