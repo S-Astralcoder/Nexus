@@ -1,0 +1,16 @@
+name: Code Quality Check
+
+on:
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    check-flow:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: CheckOut repo
+              uses: actions/checkout@v4
+              
