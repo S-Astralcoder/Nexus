@@ -20,7 +20,7 @@ jobs:
                 enable-cache: true
 
             - name: Install dependency
-              run: uv --sync --locked --dev
+              run: uv sync --locked --dev
 
             - name: Run code quality check
               run: uv run ruff check .
